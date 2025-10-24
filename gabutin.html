@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jacky's Autobiography</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap');
+
+  /* Reset */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #fff9f8;
+    color: #4a4a4a;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+  h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: #a35f4a;
+    margin-bottom: 0.4em;
+  }
+  h1 { font-size: 2.8rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.4rem; }
+  p, blockquote, li {
+    font-size: 1rem;
+    margin-bottom: 1em;
+  }
+  blockquote {
+    font-style: italic;
+    color: #b1725e;
+    border-left: 4px solid #f6d3c0;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    background: #fff1eb;
+  }
+  a {
+    text-decoration: none;
+    color: #a35f4a;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #d27e64;
+  }
+  /* Navigation */
+  nav {
+    background: #f6d3c0;
+    padding: 1rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  nav a {
+    margin: 0 1rem;
+    font-weight: 600;
+  }
+
+  /* Container */
+  .container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  /* Homepage: Autobiography Box */
+  #homepage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 1rem;
+    min-height: 80vh;
+    background: linear-gradient(135deg, #f8d7cf, #fbe9df);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(163, 95, 74, 0.2);
+    text-align: center;
+  }
+  #homepage h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #a35f4a;
+    margin-bottom: 2rem;
+  }
+  #click-box {
+    width: 280px;
+    height: 120px;
+    border: 3px solid #a35f4a;
+    border-radius: 20px;
+    background-color: #fadbd0;
+    color: #a35f4a;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(163, 95, 74, 0.3);
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  #click-box:hover {
+    background-color: #f6d3c0;
+    color: #7e4c3d;
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 3rem;
+  }
+
+  /* Banner for Jacky's Autobiography after homepage */
+  #jacky-autobiography {
+    background: linear-gradient(135deg, #fbe9df 0%, #fef1ec 100%);
+    padding: 3rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(163, 95, 74, 0.15);
+  }
+  #jacky-autobiography blockquote {
+    font-size: 1.3rem;
+    font-style: italic;
+    color: #b1725e;
+    max-width: 600px;
+    margin: 1rem auto 2rem auto;
+    border-left: 6px solid #f6d3c0;
+    padding-left: 1rem;
+    background: #fff1eb;
+  }
+
+  /* Photos placeholders */
+  .photo-placeholder {
+    width: 160px;
+    height: 160px;
+    background: #f6d3c0;
+    border-radius: 50%;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a35f4a;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    user-select: none;
+    box-shadow: 0 2px 8px rgba(163, 95, 74, 0.3);
+  }
+
+  /* Background story with subtle candle/sunset background */
+  #background-story {
+    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80') no-repeat center/cover;
+    border-radius: 12px;
+    color: #fff;
+    text-shadow: 0 1px 7px rgba(0,0,0,0.6);
+    padding: 2rem;
+  }
+  #background-story > div {
+    background: rgba(0,0,0,0.35);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+
+  /* About me */
+  #about-me .fun-facts {
+    background: #fdebdb;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 3px 6px rgba(163, 95, 74, 0.15);
+    max-width: 480px;
+    margin-top: 1.5rem;
+    color: #6f4a3e;
+  }
+
+  /* Skills list */
+  #skills ul {
+    list-style-type: disc;
+    padding-left: 2rem;
+    color: #6f4a3e;
+  }
+
+  /* Inspirational section */
+  #inspirational {
+    background: #f8eee7;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(163, 95, 74, 0.1);
+  }
+  #inspirational blockquote {
+    margin-bottom: 0;
+    font-style: normal;
+    font-weight: 700;
+    color: #a35f4a;
+    text-align: center;
+  }
+
+  /* Contact */
+  #contact {
+    text-align: center;
+    background: #f6d3c0;
+    padding: 2rem 1rem;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(163, 95, 74, 0.2);
+    color: #7e4c3d;
+  }
+  #contact p {
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+  #contact a.instagram-link {
+    display: inline-block;
+    background: #a35f4a;
+    color: white;
+    padding: 0.7rem 1.2rem;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  #contact a.instagram-link:hover {
+    background-color: #d27e64;
+  }
+</style>
+</head>
+<body>
+
+<nav aria-label="Primary Navigation">
+  <a href="#homepage">Homepage</a>
+  <a href="#jacky-autobiography">Jacky's Autobiography</a>
+  <a href="#background-story">Background Story</a>
+  <a href="#about-me">About Me</a>
+  <a href="#skills">Skills & Passions</a>
+  <a href="#inspirational">Inspirational Lessons</a>
+  <a href="#contact">Contact Me</a>
+</nav>
+
+<main class="container">
+
+  <!-- Homepage with clickable box -->
+  <section id="homepage" aria-label="Homepage with clickable box to proceed">
+    <h1>My Autobiography</h1>
+    <div id="click-box" role="button" tabindex="0" aria-pressed="false" aria-label="Click to proceed to Jacky's Autobiography" 
+      onclick="showAutobiography()" onkeydown="if(event.key==='Enter' || event.key===' ') showAutobiography()">
+      Click Here to Proceed
+    </div>
+  </section>
+
+  <!-- Jacky's Autobiography -->
+  <section id="jacky-autobiography" aria-label="Jacky's Autobiography" style="display:none;">
+    <h1>Jacky’s Autobiography: A Story of Strength, Love, and Hope</h1>
+    <blockquote>“Even when life takes something away, love gives you strength to rise again.”</blockquote>
+    <p>Hi there! I’m <strong>Jackelyn</strong> but you can call me Jacky, and I’m so glad you’re here. This website tells my story — one of love, loss, resilience, and hope. My journey hasn’t been easy, but every chapter has taught me the true meaning of strength and family.</p>
+             <img src="jacky.jpg" alt="Portrait photo of Jacky"
+     style="display: block; margin: 2rem auto; width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
+  </section>
+
+  <!-- Background Story -->
+  <section id="background-story" aria-label="The Beginning of My Journey">
+    <div>
+      <h2>The Beginning of My Journey</h2>
+      <p>Many people don’t know that my story began with both joy and heartbreak. My mom passed away on the very evening of my 2nd birthday — a day that was meant to celebrate life became one that changed mine forever. Growing up without my mom was never easy, but I was blessed with a loving, supportive family who became my strength.</p>
+      <p>They taught me that even in pain, there’s purpose. Even in loss, there’s love. I learned that no matter how dark life gets, there’s always light waiting to shine again and I choose to keep shining for my mom and for everyone who believes in me.</p>
+      <blockquote>“Life didn’t start easy, but it taught me to never give up.”</blockquote>
+         <img src="jacky1.jpg" alt="Portrait photo of Jacky"
+     style="display: block; margin: 2rem auto; width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
+    </div>
+  </section>
+
+  <!-- About Me -->
+  <section id="about-me" aria-label="About Jackelyn Marie">
+    <h2>Hello Everyone, I’m Jackelyn Marie</h2>
+    <p>Hello everyone! My name is Jackelyn Marie B. Gabutin, a 18 years old and a BIT student at Lapu-Lapu City College. I’m a dreamer, a believer, and someone who never gives up easily. I grew up learning how important kindness, family, and faith are in shaping who we become.</p>
+    <p>I love meeting new people, learning new things, and turning challenges into opportunities. Whether it’s helping others, creating something meaningful, or just spreading positivity, I always aim to inspire others through my story. One of my weaknesses is that when I make promises or plans with others and can’t fulfill them, I tend to feel they might be upset with me and I also feel shy or nervous when presenting or speaking in front of others. But I’m continuously working on these areas to build more confidence and courage to overcome them.</p>
+
+    <div class="fun-facts" aria-label="Fun facts about Jacky">
+      <h3>Fun Facts</h3>
+      <p><strong>Favorite Quote/Verse:</strong> [translate:"When the time is right, I The lord will make it happen"] Isaiah 60:22</p>
+      <p><strong>Hobbies:</strong> writing, spending time with family, helping others and playing online games</p>
+      <p><strong>Life Motto:</strong> “Turn your struggles into strength and your dreams into direction.”</p>
+    </div>
+
+    <img src="jacky.jpg" alt="Portrait photo of Jacky"
+     style="display: block; margin: 2rem auto; width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
+  </section>
+
+  <!-- Skills & Passions -->
+  <section id="skills" aria-label="Skills and Passions">
+    <h2>What I Love and What I Do</h2>
+    <p>Over the years, I’ve developed skills that reflect my personality and experiences. I believe every challenge taught me something and every lesson became a skill I carry with me today.</p>
+    <ul>
+      <li>I treat everyone with kindness and respect.</li>
+      <li>I find satisfaction in supporting others whenever they need assistance.</li>
+      <li>I am a good listener and always pay attention to what people say.</li>
+    </ul>
+  </section>
+
+  <!-- Inspirational Section -->
+  <section id="inspirational" aria-label="Lessons learned and inspiration">
+    <h2>Lessons I’ve Learned</h2>
+    <p>Life taught me that everything happens for a reason sometimes the pain we experience is preparing us for the purpose we’re meant to fulfill.</p>
+    <ul>
+      <li>Family isn’t just who you’re born with — it’s who stands by you.</li>
+      <li>Strength is not about never falling, but about always getting back up.</li>
+      <li>Hope is powerful. Even when everything seems impossible, hold on.</li>
+    </ul>
+    <blockquote>“Keep believing, keep shining — your story matters too.”</blockquote>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" aria-label="Contact Jacky">
+    <h2>Let’s Connect</h2>
+    <p>Thank you for taking time to know my story. If my journey inspired you or if you’d like to share yours, I’d love to hear from you!</p>
+    <p>You can connect with me on Instagram:</p>
+    <a href="https://www.instagram.com/its_mej.m.g?igsh=bGs2bmEybGQ2dXc4" target="_blank" rel="noopener" class="instagram-link" aria-label="Follow Jacky on Instagram">
+      its_mej.m.g ate
+    </a>
+  </section>
+
+</main>
+
+<script>
+  function showAutobiography() {
+    document.getElementById('homepage').style.display = 'none';
+    document.getElementById('jacky-autobiography').style.display = 'block';
+    document.getElementById('jacky-autobiography').scrollIntoView({behavior: 'smooth'});
+  }
+</script>
+
+</body>
+</html>
